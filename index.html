@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashmit Deb - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --secondary-text: #888888;
+            --accent-color: #4A90E2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav__container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav__links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav__link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav__link:hover {
+            color: var(--accent-color);
+        }
+
+        /* Home Section */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .home__container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .home__title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .home__description {
+            color: var(--secondary-text);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* Skills Carousel */
+        .skills-carousel {
+            position: relative;
+            width: 250px;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .carousel-slide {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .carousel-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .skill-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            color: #000;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .carousel-button.prev {
+            left: -50px;
+        }
+
+        .carousel-button.next {
+            right: -50px;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* Section Styles */
+        .section {
+            min-height: 100vh;
+            padding: 80px 2rem 2rem;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section__container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section__title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .card__subtitle {
+            color: var(--secondary-text);
+            margin-bottom: 1rem;
+        }
+
+        .card ul {
+            list-style-position: inside;
+            color: var(--secondary-text);
+        }
+
+        .card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skill Tags */
+        .skill-tags, .course-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag, .course-tag {
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover, .course-tag:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Course Section */
+        .courses__title {
+            margin: 2rem 0 1rem;
+            color: var(--text-color);
+        }
+
+        /* Navigation Link Active State */
+        .nav__link.active {
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__container">
+            <a href="#home" class="nav__link">
+                <i class='bx bx-code-alt'></i>
+                Ashmit Deb
+            </a>
+            <div class="nav__links">
+                <a href="#skills" class="nav__link">
+                    <i class='bx bx-laptop'></i>
+                    Skills
+                </a>
+                <a href="#projects" class="nav__link">
+                    <i class='bx bx-code-block'></i>
+                    Projects
+                </a>
+                <a href="#experience" class="nav__link">
+                    <i class='bx bx-briefcase'></i>
+                    Experience
+                </a>
+                <a href="#education" class="nav__link">
+                    <i class='bx bx-book'></i>
+                    Education
+                </a>
+                <a href="#resume" class="nav__link">
+                    <i class='bx bx-file'></i>
+                    Resumé
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="home__container">
+            <div class="home__content">
+                <h1 class="home__title">Ashmit Deb</h1>
+                <p class="home__description">
+                    I am currently a student studying Computer Science with a minor in Entrepreneurship at the University of Michigan. After interning at Blue Cross Blue Shield of Michigan and University of Michigan at the Electrical Engineering and Computer Science Department, in addition to working on various programming projects, my interest lies in software applications and Artificial Intelligence.
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com" class="social-link" target="_blank">
+                        <i class='bx bxl-github'></i>
+                    </a>
+                    <a href="https://linkedin.com/in/ashmit-deb" class="social-link" target="_blank">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+                    <a href="mailto:ashmitd@umich.edu" class="social-link">
+                        <i class='bx bx-envelope'></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="skills-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" class="skill-icon">
+                        <h3 class="skill-name">C++</h3>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="skill-icon">
+                        <h3 class="skill-name">Python</h3>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="skill-icon">
+                        <h3 class="skill-name">Java</h3>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="skill-icon">
+                        <h3 class="skill-name">JavaScript</h3>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="skill-icon">
+                        <h3 class="skill-name">HTML5</h3>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="skill-icon">
+                        <h3 class="skill-name">CSS3</h3>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" class="skill-icon">
+                        <h3 class="skill-name">SQL</h3>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino" class="skill-icon">
+                        <h3 class="skill-name">Arduino</h3>
+                    </div>
+                </div>
+                <button class="carousel-button prev">
+                    <i class='bx bx-chevron-left'></i>
+                </button>
+                <button class="carousel-button next">
+                    <i class='bx bx-chevron-right'></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+    <div class="section__container">
+        <h2 class="section__title">Skills</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Technical Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Software</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Power Automate</span>
+                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">TriZetto Facets</span>
+                    <span class="skill-tag">Citrix</span>
+                    <span class="skill-tag">LTspice</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Programming Platforms</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">XCode</span>
+                    <span class="skill-tag">Visual Studio Code</span>
+                    <span class="skill-tag">MySQL Workbench</span>
+                    <span class="skill-tag">Arduino IDE 2.0</span>
+                    <span class="skill-tag">Glitch</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+    <div class="section__container">
+        <h2 class="section__title">Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Stock Sentiment Analysis Utilizing Reddit API</h3>
+                <div class="project-description">
+                    Engineered a C++ application that analyzes stock market sentiment by processing Reddit data across multiple financial reddit communities (r/wallstreetbets, r/stocks, and r/investing) using the Reddit API featuring an interactive CLI with real-time progress visualization and detailed HTML report generation. Implemented stock sentiment analysis algorithms using weighted scoring of financial terminology and post metrics integrating CURL for API requests and JsonCpp for data parsing while employing modern C++ features including RAII, STL containers, and multi-threading for concurrent subreddit processing.
+                </div>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">API</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Arduino centered Night-Lamp</h3>
+                <div class="project-description">
+                    Developed and designed an efficient Arduino-based LED Matrix night-lamp. This project utilizes a C++ variant programming language while tailoring light sensor data and button inputs to produce an interactive display allowing me to convey the depths of embedded systems in everyday objects. The software and hardware provides an enjoyable experience by adjusting the display using natural light as well as also offering a manual button to change the user's brightness preference and LED aesthetic design choice.
+                </div>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="skill-tag">Arduino</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Hardware</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Java Based Game Development</h3>
+                <div class="project-description">
+                    Designed a text-based story mode adventure game in Java that utilizes decision making and thought process while including facts and knowledge about caves. Provides different paths based on choices made and requires strategy and logical reasoning to complete. Was integrated for younger users as a substitute for non-educational games. Keeps users engaged by offering different levels and increasing difficultly the farther the user goes.
+                </div>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Game Development</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>LED Matrix Scoreboard Display</h3>
+                <div class="project-description">
+                    Designed an LED Matrix interactive display that uses RGB light panels to represent different number values for sporting events. Implemented button inputs to increment the number values from 1 to 64. Used an Arduino to combine the hardware and software and provide a user-friendly experience while also allowing to learn more about the applications of hardware programming.
+                </div>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="skill-tag">Arduino</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">LED Programming</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section with your content -->
+<section id="experience" class="section">
+    <div class="section__container">
+        <h2 class="section__title">Experience</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Blue Cross Blue Shield of Michigan</h3>
+                <p class="card__subtitle">IT Intern - Data Integration | May 2024 - Aug. 2024 | Southfield, MI</p>
+                <ul>
+                    <li>Conducted source-to-target mapping to retrieve data transformation and migration across systems while utilizing SQL and ETL processes to maintain data consistency and optimize integration workflows</li>
+                    <li>Used Power Automate along with Sharepoint for IT intake forms while also storing and formatting confidential patient inquiries for data integrity</li>
+                    <li>Managed software testing using TriZetto Facets to file claim inquiries to Cognizant focusing on the non-production environments E2E and SIT</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Spears to Success</h3>
+                <p class="card__subtitle">Software Development Intern | June 2023 - Aug. 2023 | New York, NY</p>
+                <ul>
+                    <li>Improved user return rate and increased website activity by over 200% through HTML5 and CSS3</li>
+                    <li>Developed a sitemap and wireframe to help create a target outline to structurally define the website</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>University of Michigan - EECS Department</h3>
+                <p class="card__subtitle">Summer Research Intern | June 2022 - Sep. 2022 | Ann Arbor, MI</p>
+                <ul>
+                    <li>Worked in Professor Mortazawi's postgraduate research group and conducted research on wireless power transmission and AM frequency</li>
+                    <li>Operated different analog circuit simulators including LTspice while working hands on with RLC circuits and converting 1 MHz radio waves into an AC voltage source</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="section">
+    <div class="section__container">
+        <h2 class="section__title">Education</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>University of Michigan</h3>
+                <p class="card__subtitle">Computer Science, BSE | GPA: 3.4/4.0</p>
+                <p class="card__subtitle">Minor in Entrepreneurship with emphasis on Marketing and Product Innovation Management</p>
+                
+                <h4 style="color: var(--accent-color); margin-top: 1.5rem; margin-bottom: 0.5rem;">Academic Courses</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">EECS 183</span>
+                    <span class="skill-tag">EECS 203</span>
+                    <span class="skill-tag">EECS 280</span>
+                    <span class="skill-tag">EECS 281</span>
+                    <span class="skill-tag">EECS 370</span>
+                    <span class="skill-tag">EECS 485</span>
+                    <span class="skill-tag">MATH 214</span>
+                    <span class="skill-tag">MATH 215</span>
+                    <span class="skill-tag">MKT 425</span>
+                    <span class="skill-tag">IOE 463</span>
+                </div>
+
+                <h4 style="color: var(--accent-color); margin-top: 1.5rem; margin-bottom: 0.5rem;">Extracurricular Activities</h4>
+                <ul>
+                    <li>Quantitative Consulting and Finance Group (QCF)</li>
+                    <li>Michigan Student Artificial Intelligence Laboratory (MSAIL)</li>
+                    <li>Michigan Financial and Math Society (MFAMS)</li>
+                    <li>MHackers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Resume Section -->
+<section id="resume" class="section">
+    <div class="section__container">
+        <h2 class="section__title">Resumé</h2>
+        <div class="grid">
+            <div class="card">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h3 style="font-size: 2rem;">Ashmit Deb</h3>
+                    <p class="card__subtitle" style="margin-top: 0.5rem;">
+                        <a href="https://linkedin.com/in/ashmit-deb" target="_blank" style="color: var(--accent-color); text-decoration: none;">linkedin.com/in/ashmit-deb</a><br>
+                        734-883-1390 • ashmitd@umich.edu
+                    </p>
+                </div>
+
+                <h4 style="color: var(--accent-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">RESUME</h4>
+                <p style="color: var(--secondary-text); margin-bottom: 2rem; text-align: center;">
+                    View or download my complete resume below
+                </p>
+                
+                <div style="margin-top: 2rem; text-align: center; display: flex; gap: 1rem; justify-content: center;">
+                    <a href="ashmit-deb-resume.pdf" 
+                       target="_blank"
+                       style="
+                            background-color: var(--accent-color);
+                            color: white;
+                            padding: 1rem 2rem;
+                            border-radius: 8px;
+                            text-decoration: none;
+                            display: inline-block;
+                            transition: all 0.3s ease;
+                            font-weight: 500;
+                       "
+                       onmouseover="this.style.backgroundColor='#357ABD'"
+                       onmouseout="this.style.backgroundColor='var(--accent-color)'">
+                        <i class='bx bx-file' style="margin-right: 0.5rem;"></i>
+                        View Resume
+                    </a>
+                    
+                    <a href="ashmit-deb-resume.pdf" 
+                       download
+                       style="
+                            background-color: var(--accent-color);
+                            color: white;
+                            padding: 1rem 2rem;
+                            border-radius: 8px;
+                            text-decoration: none;
+                            display: inline-block;
+                            transition: all 0.3s ease;
+                            font-weight: 500;
+                       "
+                       onmouseover="this.style.backgroundColor='#357ABD'"
+                       onmouseout="this.style.backgroundColor='var(--accent-color)'">
+                        <i class='bx bx-download' style="margin-right: 0.5rem;"></i>
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script>
+        // Carousel Functionality
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.querySelector('.carousel-button.prev');
+        const nextBtn = document.querySelector('.carousel-button.next');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);});
+
+nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+});
+
+// Auto advance slides
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}, 3000);
+
+// Section Navigation
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav__link');
+    const sections = document.querySelectorAll('.section');
+
+    // Function to update active section
+    const updateActiveSection = () => {
+        let scrollY = window.scrollY;
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 100;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                sections.forEach(s => s.classList.remove('active'));
+                section.classList.add('active');
+            }
+        });
+    };
+
+    // Smooth scroll to section
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+                
+                // Update active states
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                sections.forEach(s => s.classList.remove('active'));
+                targetSection.classList.add('active');
+            }
+        });
+    });
+
+    // Update active section on scroll
+    window.addEventListener('scroll', updateActiveSection);
+    
+    // Initial check for active section
+    updateActiveSection();
+});
+</script>
+</body>
+</html>
