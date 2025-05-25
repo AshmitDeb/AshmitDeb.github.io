@@ -14,7 +14,7 @@ Live at: https://ashmitdeb.com
 
 ## Tech Stack
 
-- HTML5
+- HTML5, CSS3, JS
 - Google Fonts (Inter)  
 - Boxicons  
 - Hosted via GitHub Pages
