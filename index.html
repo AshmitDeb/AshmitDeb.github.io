@@ -287,16 +287,15 @@
     }
 
     .logo-scroll {
-    border-radius: 18px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    backdrop-filter: blur(10px);
-    padding: .9rem;
-    overflow: hidden;
-    position: relative;
-    height: clamp(140px, 16vw, 190px);
-}
-
+      border-radius: 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(10px);
+      padding: .9rem;
+      overflow: hidden;
+      position: relative;
+      height: clamp(140px, 16vw, 190px);
+    }
 
     .logo-scroll::after {
       content: "";
@@ -410,14 +409,14 @@
         <p class="hero__subtitle">University of Michigan Computer Science</p>
 
         <p class="hero__desc">
-          Computer Science student at the University of Michigan with a minor in Entrepreneurship. Experienced in software development, data engineering, and Machine Learning through internships at Sigray, Blue Cross Blue Shield of Michigan, and Phaseify. Passionate about creating innovative solutions in technology.
+          Computer Science student at the University of Michigan with a minor in Entrepreneurship. Experienced in software engineering, data engineering, machine learning, and infrastructure analytics through internships at Health Care Service Corporation, Sigray, and Blue Cross Blue Shield of Michigan. Passionate about building reliable, scalable technology that turns complex data into useful products and operational insights.
         </p>
 
         <div class="quickfacts">
           <span class="pill"><i class='bx bx-bolt-circle'></i> Real time systems</span>
           <span class="pill"><i class='bx bx-cloud'></i> AWS and Azure</span>
           <span class="pill"><i class='bx bx-data'></i> Data and ML</span>
-          <span class="pill"><i class='bx bx-devices'></i> UI development</span>
+          <span class="pill"><i class='bx bx-line-chart'></i> AIOps analytics</span>
         </div>
 
         <div class="btnrow">
@@ -437,16 +436,16 @@
           <h3>Highlights</h3>
           <p class="card__subtitle">Quick scan</p>
           <ul>
-            <li>Built cloud deployed services and dashboards using Node, React, and Vue</li>
-            <li>Designed Java and Spring Boot APIs with relational databases</li>
-            <li>Used Python and Jupyter for machine learning workflows and analytics</li>
+            <li>Built Python and PySpark pipelines for infrastructure capacity planning and forecasting</li>
+            <li>Designed Java and Spring Boot APIs with relational databases and cloud services</li>
+            <li>Automated analytics workflows using SQL, ServiceNow data, dashboards, and ML tooling</li>
           </ul>
         </div>
 
         <!-- Flashy scrolling tech column -->
         <div class="logo-scroll" aria-label="Technology stack">
           <div class="logo-track">
-            <!-- list (repeat twice for seamless scroll) -->
+            <!-- list repeated twice for seamless scroll -->
             <div class="logo-item">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
               <span>C++</span>
@@ -480,11 +479,11 @@
               <span>Vue</span>
             </div>
             <div class="logo-item">
-                <img
+              <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
                 alt="AWS"
                 onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg';"
-              />              
+              />
               <span>AWS</span>
             </div>
             <div class="logo-item">
@@ -583,8 +582,14 @@
         <details>
           <summary>More</summary>
           <div class="skill-tags">
-            <span class="skill-tag">C</span><span class="skill-tag">Swift</span><span class="skill-tag">HTML</span><span class="skill-tag">CSS</span>
-            <span class="skill-tag">Kotlin</span><span class="skill-tag">Rust</span><span class="skill-tag">Ruby</span><span class="skill-tag">Perl</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">Swift</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">Kotlin</span>
+            <span class="skill-tag">Rust</span>
+            <span class="skill-tag">Ruby</span>
+            <span class="skill-tag">Perl</span>
           </div>
         </details>
       </div>
@@ -599,7 +604,9 @@
           <span class="skill-tag">Spring Boot</span>
           <span class="skill-tag">.NET</span>
           <span class="skill-tag">TensorFlow</span>
-          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">PySpark</span>
+          <span class="skill-tag">Django</span>
+          <span class="skill-tag">MongoDB</span>
         </div>
       </div>
 
@@ -608,11 +615,13 @@
         <div class="skill-tags">
           <span class="skill-tag">AWS</span>
           <span class="skill-tag">Azure</span>
+          <span class="skill-tag">AWS RDS</span>
+          <span class="skill-tag">AWS ECS</span>
           <span class="skill-tag">Docker</span>
           <span class="skill-tag">Kubernetes</span>
-          <span class="skill-tag">Git</span>
           <span class="skill-tag">Jenkins</span>
-          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">ServiceNow</span>
+          <span class="skill-tag">MySQL</span>
           <span class="skill-tag">Linux</span>
         </div>
       </div>
@@ -636,7 +645,10 @@
           <li>Thread pool concurrency with mutex guarded queues and modern C++ practices</li>
         </ul>
         <div class="skill-tags">
-          <span class="skill-tag">C++</span><span class="skill-tag">Concurrency</span><span class="skill-tag">APIs</span><span class="skill-tag">NLP</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Concurrency</span>
+          <span class="skill-tag">APIs</span>
+          <span class="skill-tag">NLP</span>
         </div>
         <details>
           <summary>Read more</summary>
@@ -656,7 +668,10 @@
           <li>Docker Compose builds pushed to AWS ECR and scaled on AWS ECS</li>
         </ul>
         <div class="skill-tags">
-          <span class="skill-tag">Node.js</span><span class="skill-tag">React</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">AWS</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">AWS</span>
         </div>
         <details>
           <summary>Read more</summary>
@@ -675,6 +690,16 @@
 
     <div class="grid-2">
       <div class="card">
+        <h3>Health Care Service Corporation</h3>
+        <p class="card__subtitle">Software Engineer Intern, May 2026 to Present, Chicago IL</p>
+        <ul>
+          <li>Developed Python and PySpark data pipelines for ML driven infrastructure capacity planning across CPU, RAM, storage, and membership utilization trends</li>
+          <li>Built forecasting and imputation workflows over irregular telemetry to improve AIOps reporting for Linux, server, application, and infrastructure portfolios</li>
+          <li>Automated problem reporting and inventory analysis across 2,700 plus enterprise applications using SQL, ServiceNow data, and operational dashboards</li>
+        </ul>
+      </div>
+
+      <div class="card">
         <h3>Sigray</h3>
         <p class="card__subtitle">Software Engineer Intern, May 2025 to Aug 2025, Benicia CA</p>
         <ul>
@@ -691,16 +716,6 @@
           <li>Designed a REST claims processing system with Java and Spring Boot plus PostgreSQL validation logic, reducing processing time by 40 percent</li>
           <li>Built and tuned MySQL schemas in AWS RDS with unit tested queries and validation dashboards, improving data integrity and repeatable releases</li>
           <li>Improved the iOS and Android membership app by fixing 15 plus bugs and integrating the React Native UI through Firebase to a Spring Boot backend</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Phaseify</h3>
-        <p class="card__subtitle">Software Engineer Intern, May 2023 to Aug 2023, Ann Arbor MI</p>
-        <ul>
-          <li>Built a full stack web app for a career guidance platform using React and MongoDB, cutting manual coordination by 25 percent</li>
-          <li>Created shell automation to parse JSON and mask sensitive data, saving 3 plus hours per week in test environment setup</li>
-          <li>Implemented JWT authentication and improved reliability using test driven development and Sentry, decreasing user data processing errors by 25 percent</li>
         </ul>
       </div>
     </div>
